@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Tambah Data {% endblock title %}
+
+{% block breadcrumb %}
+<nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
+    <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
+        <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
+        <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Tambah Siswa</li>
+    </ol>
+</nav>
+{% endblock breadcrumb %}
+
+{% block content %}
+<!-- Header -->
+<div class="header bg-primary pb-8">
+    <div class="container-fluid">
+        <div class="header-body">
+
+        </div>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--6">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header border-0">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <h2 class="mb-0">Tambah Siswa</h2>
+                        </div>                        
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form method="post" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group mb-4">
+                                {{ field.label_tag }}{{ field }}
+                            </div>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-block btn-primary save-form">
+                            {% if form.instance.id %}Update{% else %}Create{% endif %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
